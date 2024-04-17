@@ -62,12 +62,17 @@ function MasterDataHeader({ type }) {
   }, []);
 
   const handleSubmit = async (event) => {
+    console.log(item)
     event.preventDefault();
     //reuse same function diferent endpoint
     const endpoint = type === 'edit' ? `${URL}/items/${params.id}` : `${URL}/items`;
     const method = type === 'edit' ? axios.put : axios.post;
 
+    console.log(endpoint)
+    console.log(method)
     try {
+
+      
       const response = await method(endpoint, item, {
         headers: { Authorization: `Bearer ${token}` }
       });

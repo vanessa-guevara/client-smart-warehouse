@@ -1,7 +1,7 @@
 import MasterDataHeader from "../../components/MasterDataHeader/MasterDataHeader";
 
 function MasterData() {
-    return <MasterDataHeader type="new" />;
+    return <MasterDataHeader />;
 }
 
 export default MasterData
