@@ -1,0 +1,50 @@
+@use '../../partials/mixin.scss' as *;
+@use '../../partials/variables.scss' as *;
+
+.login {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @include desktop {
+    flex-direction: row;
+    margin-left: 4rem;
+  }
+ 
+
+  &__logo {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include tablet {
+      width: 50%;
+     
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: row;
+    padding: 5rem;
+    gap: 1rem;
+  }
+  &__right {
+    margin: 3rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+      rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    border-radius: 1rem;
+
+    @include tablet {
+      margin: 4rem;
+    }
+  }
+  &__title {
+    margin-left: 4rem;
+  }
+}
+
+.error {
+  font-size: 9px;
+  color: red;
+}

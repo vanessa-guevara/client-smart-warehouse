@@ -1,0 +1,89 @@
+@use './src/partials/mixin.scss' as *;
+@use './src/partials/variables.scss' as *;
+
+
+* {
+  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Body Text -- Body Medium
+body {
+  
+  height: 100vh;
+
+  // @include text-styles(13, 20, 400);
+  @include tablet {
+    // @include text-styles(14, 22, 400);
+  }
+}
+
+// Page Header
+h1 {
+
+  // @include text-styles(28, 36, 600);
+  @include tablet {
+    // @include text-styles(32, 40, 600);
+  }
+}
+
+// Subheader
+h2 {
+
+  // @include text-styles(20, 28, 600);
+  @include tablet {
+    // @include text-styles(24, 32, 600);
+  }
+}
+
+// Labels & Buttons & Link
+label,
+button,
+link {
+  text-transform: uppercase;
+  @include text-styles(13, 20, 400);
+
+  @include tablet {
+    // @include text-styles(14,22,400);
+  }
+}
+
+// Input & Textarea
+input,
+textarea {
+  @include text-styles(10, 20, 400);
+
+  @include tablet {
+    @include text-styles(12, 20, 400);
+  }
+}
+
+//a tag no style
+a {
+  text-decoration: none;
+}
+
+input {
+  padding: 1.2em;
+}
+
+body {
+//   background-color: #f7f8f9;
+//   min-width: 320px;
+//   margin: auto;
+//   min-width: 320px;
+}
+
+//Page overall layout
+.App {
+ 
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: auto;
+}

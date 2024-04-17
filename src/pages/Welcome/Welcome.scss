@@ -1,0 +1,23 @@
+.welcome{
+    &__container{
+        margin-top: 10rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        color: white;
+        margin-bottom: 2rem;
+    }
+    &__image{
+        margin-top: 12rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        
+    }
+    &__style{
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+
+}

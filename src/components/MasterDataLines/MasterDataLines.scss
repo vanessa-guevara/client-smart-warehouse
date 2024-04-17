@@ -1,0 +1,28 @@
+.item-wh {
+  box-shadow: 0 2px 5px 0 rgba(19, 24, 18, 0.1);
+  position: relative;
+  border-radius: 1px;
+  &__titles {
+    display: flex;
+    flex-direction: row;
+    color: #2196f3;
+    padding: 1rem;
+ 
+  }
+  &__subtitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+   margin-left: 1.5rem;
+   margin-right: 1.5rem;
+   gap: 1rem;
+  }
+  &__label {
+    width: 33.3%;
+
+  }
+}

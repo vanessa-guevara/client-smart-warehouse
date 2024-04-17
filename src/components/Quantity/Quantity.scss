@@ -1,0 +1,75 @@
+.button-qty {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  &__decrement {
+    padding: 1px 12px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+    line-height: 1.5;
+    border: 1px solid;
+    border-radius: 999px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 120ms;
+    border-color: #d6d6d6;
+    background: #f2f3f4;
+    color: #1c2025;
+
+    &:focus-visible {
+      outline: 0;
+    }
+
+    &.increment {
+      order: 1;
+    }
+  }
+  &__increment {
+    padding: 1px 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+    line-height: 1.5;
+    border: 1px solid;
+    border-radius: 999px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 120ms;
+    border-color: #d6d6d6;
+    background: #f2f3f4;
+    color: #1c2025;
+    &:focus-visible {
+      outline: 0;
+    }
+
+    &.increment {
+      order: 1;
+    }
+  }
+  &__quantity {
+    border-radius: 8px;
+    margin: 0 8px;
+    padding: 10px 12px;
+    outline: 0;
+    min-width: 0;
+    width: 4rem;
+    text-align: center;
+    border: 1px solid #d6d6d6;
+  }
+}

@@ -1,0 +1,68 @@
+@use './src/partials/mixin.scss' as *;
+@use './src/partials/variables.scss' as *;
+.order {
+  margin-top: 8rem;
+  &__titles {
+    margin-top: 10rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    @include tablet {
+      margin-top: 0rem;
+      flex-direction: row;
+    }
+
+    }
+
+    &__search {
+      margin-bottom: 1rem;
+      margin-left: 1rem;
+      display: flex;
+      justify-content: flex-start;
+      gap: 2rem;
+      @include tablet {
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+      }
+    
+  }
+  &__search {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+    background-color: white;
+
+    @include tablet {
+      margin-bottom: 0;
+      flex-direction: row;
+    }
+  }
+  &__header {
+    margin-bottom: 1.5rem;
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__titles1 {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    @include tablet {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+  }
+}

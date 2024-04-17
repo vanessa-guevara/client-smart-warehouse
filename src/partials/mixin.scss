@@ -1,0 +1,54 @@
+
+//font size base
+$base-font-size: 16px;
+
+$breakpoints: (
+    "mobile": 0px,
+    "tablet": 768px,
+    "desktop": 1280px,
+);
+
+@mixin desktop {
+    @media (min-width: map-get($breakpoints, "desktop")) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: map-get($breakpoints, "tablet")) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (min-width: map-get($breakpoints, "mobile")) {
+        @content;
+    }
+}
+
+// convert pixel values (an absolute unit) to rem values (a relative unit)
+@mixin text-styles($font-size, $line-height, $font-weight) {
+    font-size: calc(#{$font-size} / #{$base-font-size}* 1rem);
+    line-height: calc(#{$line-height} / #{$base-font-size}* 1rem);;
+    font-weight: $font-weight;
+}
+
+// when adding media queries just add @include tablet or desktoop and the format will be added automatically
+@mixin mobile_h4--body_small {
+    font-size: 0.688rem;
+    line-height: 1rem;
+}
+
+@mixin tablet_h4--body_small {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+}
+
+//convert pixel values to rem units for any SCSS property.
+@mixin px-to-rem($property, $values...) {
+    $rem-values: ();
+    @each $value in $values {
+        $rem-values: append($rem-values, calc($value / $base-font-size * 1rem));
+    }
+    #{$property}: $rem-values;
+}

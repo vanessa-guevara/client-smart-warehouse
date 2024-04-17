@@ -1,0 +1,49 @@
+@use '../../partials/mixin.scss' as *;
+@use '../../partials/variables.scss' as *;
+
+.menu {
+  margin-top: 8rem;
+  width: auto;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-left: 10rem;
+    margin-right: 12rem;
+   
+  }
+
+
+
+  justify-content: center;
+  gap: 2rem;
+  &__card {
+    width: auto;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #b5e2fa;
+    border-radius: 20px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+      rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  }
+  &__title {
+    display: flex;
+    justify-content: center;
+    color: black;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  &__img {
+
+    margin-top: 3rem;
+    align-self: center;
+
+  }
+}

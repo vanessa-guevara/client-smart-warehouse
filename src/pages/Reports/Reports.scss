@@ -1,0 +1,30 @@
+@use './src/partials/mixin.scss' as *;
+@use './src/partials/variables.scss' as *;
+
+.reports{
+    display: flex;
+    flex-direction: column;
+   
+    @include tablet {
+         margin-top: 8rem;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    &__titles{
+        margin-left: 1.5rem;
+    }
+    &__container{
+        @include tablet {
+            width: 50%;
+        }
+      
+    }
+    &__charts{
+        display: flex;
+        flex-direction: column;
+        @include tablet {
+            flex-direction: row;
+        }
+    }
+
+}
