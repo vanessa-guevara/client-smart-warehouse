@@ -12,7 +12,7 @@ function MenuAdmin() {
     return (
         <div className="menu">
           
-            <Link to='/users'>
+            <Link to='/user-list'>
                 <div className="menu__card" >
                     <img className="menu__img" src={users} alt="place" />
                     <h1 className='menu__title'>Users</h1>

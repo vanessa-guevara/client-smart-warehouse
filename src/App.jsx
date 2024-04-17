@@ -21,6 +21,7 @@ import MenuManager from "./pages/MenuManager/MenuManager";
 import WarehouseForm from "./components/WarehouseForm/WarehouseForm";
 import WarehouseList from "./pages/WarehouseList/WarehouseList";
 import WarehouseEdit from "./pages/WarehouseEdit/WarehouseEdit";
+import UserList from "./pages/UserList/UserList";
 function App() {
   return (
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="/welcome" element={<Welcome />} />
             <Route path="/new-item" element={<MasterData />} />
             <Route path="/item-list" element={<InventoryList />} />
+            <Route path="/user-list" element={<UserList />} />
             <Route path="/warehouse-list" element={<WarehouseList />} />
             <Route path="/location-list" element={<LocationList />} />
             <Route path="/menu" element={<Menu />} />

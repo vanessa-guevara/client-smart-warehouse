@@ -40,8 +40,8 @@
    
   }
   &__edit{
-   margin-top: 0.5rem;
-   margin-left: 10rem;
+   margin-top: 0.2rem;
+  //  margin-left: 10rem;
     width: 2rem;
     height: 2rem;
     @include tablet {
@@ -91,6 +91,14 @@
     flex-direction: column;
     justify-content: center;
   }
+  &__group2 {
+    width: 30%;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 2rem;
+  }
   &__info {
     width: 60%;
   }
@@ -98,6 +106,12 @@
     width: 60%;
     margin-left: 4.5rem;
   }
+
+  &__info2 {
+    width: 35%;
+    margin-left: 1.5rem;
+  }
+ 
   &__list{
     margin: 2rem;
     padding-top: 1rem;
@@ -112,4 +126,8 @@
     color: $blue;
 
   }
+}
+
+.MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root{
+  width: auto;
 }
