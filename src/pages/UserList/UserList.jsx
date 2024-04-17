@@ -125,7 +125,7 @@ function UserList() {
 
 
             <ul className='inventory__list' sx={style}>
-                <div className='inventory__labels'>
+                <div className='inventory__container1'>
                     <div className='inventory__info'>
                         <ListItemText primary="Name" sx={{'margin-left':'1rem'}}
 
@@ -136,7 +136,7 @@ function UserList() {
 
                         />
                     </div>
-                    <div className='inventory__info'>
+                    <div className='inventory__group'>
                         <ListItemText primary="Role"
 
                         />

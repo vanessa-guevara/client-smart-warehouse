@@ -6,7 +6,7 @@ import saleOrder from '../../assets/icons/saleOrder.png'
 import inventory from '../../assets/icons/inventory.png'
 import reports from '../../assets/icons/reports.png'
 
-
+import Left from '../../components/Left/Left'
 import './Menu.scss'
 import { useNavigate } from 'react-router-dom';
 
@@ -16,9 +16,10 @@ function Menu() {
     const navigate=useNavigate();
 
     return (
+        <section className="menu-logistic">
+          
         <div className="menu">
           
-           
                 <div className="menu__card"  onClick={() => navigate('/item-list')}>
                     <img className="menu__img" src={inventory} alt="place" />
                     <h2 className='menu__title'>Items</h2>
@@ -57,6 +58,7 @@ function Menu() {
                 </div>
            
         </div>
+        </section>
     )
 }
 export default Menu;

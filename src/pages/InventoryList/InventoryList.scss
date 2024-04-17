@@ -76,6 +76,13 @@
 
     width: 100%;
   }
+  &__container1 {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    color: $blue;
+    width: 100%;
+  }
   &__group {
     width: 40%;
     font-weight: 700;
@@ -108,8 +115,8 @@
   }
 
   &__info2 {
-    width: 35%;
-    margin-left: 1.5rem;
+    width: 55%;
+    margin-left: 4.5rem;
   }
  
   &__list{
