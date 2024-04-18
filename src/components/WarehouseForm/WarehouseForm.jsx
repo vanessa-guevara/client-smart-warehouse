@@ -107,6 +107,10 @@ function WarehouseForm({ type }) {
             }
     
             setAlertType('success');
+
+            setTimeout(() => {
+                navigate('/warehouse-list');
+              }, 2000); 
         } catch (error) {
             setMessage(error.response?.data?.message || error.message);
             setAlertType('error');

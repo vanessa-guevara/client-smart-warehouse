@@ -8,6 +8,7 @@ import OrderDetail from "./pages/SalesOrderDetail/SalesOrderDetail";
 import Orders from "./pages/SalesOrders/SalesOrders";
 import LayoutAuth from "./pages/LayoutAuth/LayoutAuth";
 import Reports from './pages/Reports/Reports'
+import OrderBody from "./pages/OrderBody/OrderBody";
 import './App.scss'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import OrderList from "./pages/OrdersList/OrderList";
@@ -22,6 +23,7 @@ import WarehouseForm from "./components/WarehouseForm/WarehouseForm";
 import WarehouseList from "./pages/WarehouseList/WarehouseList";
 import WarehouseEdit from "./pages/WarehouseEdit/WarehouseEdit";
 import UserList from "./pages/UserList/UserList";
+import InventoryTransaction from "./pages/InventoryTransaction/InventoryTransaction";
 function App() {
   return (
 
@@ -54,8 +56,11 @@ function App() {
             <Route path="/warehouse-list/edit/:id" element={<WarehouseEdit />} />
             <Route path="/users" element={<Users />} />
             <Route path="/warehouse" element={<WarehouseForm />} />
+            <Route path="/sales-orders/orders-info/:id" element={<OrderBody type={"sales"} />} />
+            <Route path="/purchase-orders/porders-info/:id" element={<OrderBody type={"purchase"} />} />
             <Route path="*" element={<NotFound />} />
-            
+            <Route path="/delivery/sales-detail/:id/inventory-transaction/:id" element={<InventoryTransaction type={"sales"} />} />
+            <Route path="/good-receipt/purchase-detail/:id/inventory-transaction/:id" element={<InventoryTransaction type={"purchase"} />} />
 
           </Route>
         </Routes>

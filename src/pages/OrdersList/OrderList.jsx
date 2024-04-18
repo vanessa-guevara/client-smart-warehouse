@@ -32,6 +32,8 @@ function OrderList({ type }) {
     const navigate = useNavigate();
 
     const URL =process.env.REACT_APP_API_URL;
+    const path = type === 'sales' ? "sales-orders/orders-info" : "purchase-orders/porders-info";
+    const handleClick = (id) => navigate(`/${path}/${id}`);
 
 
     useEffect(() => {
@@ -133,8 +135,8 @@ function OrderList({ type }) {
 
                 {orders?.map((order) => {
                     return (
-                        // onClick={() => handleClick(order.OrderID)}
-                        <ListItemButton sx={{ width: '100%' }}   >
+                        
+                        <ListItemButton sx={{ width: '100%' }}  onClick={() => handleClick(order.OrderID)} >
                             <div className='inventory__item'>
 
                                 <ListItemAvatar>

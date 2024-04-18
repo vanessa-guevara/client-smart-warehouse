@@ -126,6 +126,18 @@
       rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
     border-radius: 1rem;
   }
+  &__list1{
+    margin: 2rem;
+    padding-top: 1rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+      rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    border-radius: 1rem;
+
+
+    @include tablet {
+      margin: 8rem;
+    }
+  }
 
   &__labels {
     display: flex;

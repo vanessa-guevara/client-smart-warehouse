@@ -6,13 +6,12 @@ import Button from '../../components/Button/Button';
 import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SalesOrderDetail.scss'
+
 import Left from '../../components/Left/Left';
-import Alert from '@mui/material/Alert';
 import { useParams } from 'react-router-dom';
 import Autocomplete from '@mui/material/Autocomplete';
 import Quantity from '../../components/Quantity/Quantity';
-function OrderDetail({ type }) {
+function OrderBody({ type }) {
 
     const navigate = useNavigate();
     const params = useParams();
@@ -32,8 +31,7 @@ function OrderDetail({ type }) {
     const [locationSelections, setLocationSelections] = useState({});
     const [locationError, setLocationError] = useState([false])
     const [qtyError, setQtyError] = useState([])
-    const [message, setMessage] = useState('');
-    const [alertType, setAlertType] = useState('success');
+
 
     const [formData, setFormData] = useState();
 
@@ -213,11 +211,8 @@ function OrderDetail({ type }) {
         const hasQtyErrors = Object.values(qtyError).some(e => e);
         const hasLocationErrors = Object.values(locationError).some(e => e);
 
-
-
         if (hasQtyErrors || hasLocationErrors) {
-            setMessage('Please check the quantities and locations before submitting.');
-            setAlertType('error');
+            alert("Please check the quantities and locations before submitting.");
             return;
         }
 
@@ -278,23 +273,13 @@ function OrderDetail({ type }) {
 
 
                 });
-                const idTr = response.data
-                console.log(idTr.id)
-                setMessage(`Transaction ${idTr.id} processed successfully.`);
-                setAlertType('success');
 
-                setTimeout(() => {
-
-                   
-                    navigate(`inventory-transaction/${idTr.id}`);
-                  }, 2000); 
-
-               
+                alert(response.data.message);
+                navigate('/delivery')
 
             } catch (error) {
                 console.error('Error creating  delivery:', error);
-                setMessage('Failed to process the transaction.');
-                setAlertType('error');
+
             }
         }
 
@@ -307,15 +292,15 @@ function OrderDetail({ type }) {
     console.log(type)
     return (
 
-        <section className='sales'>
-            {message && <Alert severity={alertType}>{message}</Alert>}
-            <div className='order__header'>
-                <div className='order__titles'>
-                    <Left />
-                    <h1 >{type === 'sales' ? "New Delivery" : "New Receipt"}</h1>
-                </div>
+        <section className='sales1'>
+            <div className='inventory__list1'>
+                <div className='order__header'>
+                    <div className='order__titles'>
+                        <Left />
+                        <h2 >{type === 'sales' ? "Sales Order" : "Purchase Order"}</h2>
+                    </div>
 
-                <div className='order__titles1'>
+                    {/* <div className='order__titles1'>
                     <Input label="Item #"
                         onChange={handleSearchChange}
                         value={searchTerm}
@@ -332,123 +317,130 @@ function OrderDetail({ type }) {
                         type="button"
                         text="Search" />
 
+                </div> */}
                 </div>
-            </div>
-            <div className='sales__header'>
-                <div>
-                    <h2>{order?.order.WarehouseName}</h2>
-                    <br />
-                    <h3>Order#: {order?.order.OrderID}</h3>
+                <div className='sales__header'>
+                    <h3 className='sales__titleswh'>{order?.order.WarehouseName}</h3>
+                    <div className='sales__container-header'>
 
-                    <p>Order Date:{new Date(order?.order.OrderDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
 
-                    <p>Delivery Date:{new Date(order?.order.LogisticDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                        <div>
+
+                            <h3>Order#: {order?.order.OrderID}</h3>
+                            <h3>Status {order?.order.Status}</h3>
+                            <p>Order Date:{new Date(order?.order.OrderDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+
+                            <p>Delivery Date:{new Date(order?.order.LogisticDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                        </div>
+
+
+                        <div>
+                            <h3>{type === 'sales' ? "Customer Info" : "Vendor Info"}</h3>
+                            <p>{order?.order.BusinessPartnerName}</p>
+                            <p>{order?.order.Address}</p>
+                            <p>{order?.order.City}</p>
+                        </div>
+
+                    </div>
+
+
                 </div>
-                <div>
 
-                    <h3>{type === 'sales' ? "Customer Info" : "Vendor Info"}</h3>
-                    <p>{order?.order.BusinessPartnerName}</p>
-                    <p>{order?.order.Address}</p>
-                    <p>{order?.order.City}</p>
+                <div className='sales__container1'>
+                    <div className='sales__info'>
+                        <div className='sales__detail'>
+                            <div className='sales__info'>
+                                <ListItemText primary="Item" />
+                            </div>
+                            <div className='sales__info'>
+                                <ListItemText primary="Quantity" />
+                            </div>
+                            <div className='sales__info'>
+                                <ListItemText primary="Open Quantity" />
+                            </div>
+                            <div className='sales__info'>
+                                <ListItemText primary='unit' />
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-            </div>
-            <form className='sales__form' onSubmit={handleSubmitForm}>
-                <div className='sales__details'>
-                    {order?.orderdetails
-                        .filter(item => item.Status === 'Open')
-                        .map((item, index) => {
-                            return (
-
-                                <div className='sales__item' key={item.ItemID}>
-                                    <div
-                                        key={item.ItemID}
-                                        className={`sales__item ${item.ItemID.toString() === highlightedItem ? 'highlighted' : ''}`}
-                                        ref={el => itemRefs.current[index] = el}
-                                    >
 
 
-                                        <div className='sales__container'>
-
-                                            <div className='sales__info'>
-                                                <div className='sales__detail'>
-                                                    <ListItemText primary={item.ItemID} secondary={item.ItemName} />
-
-                                                </div>
+                <form className='sales__form' onSubmit={handleSubmitForm}>
+                    <div className='sales__details'>
 
 
 
+                        {order?.orderdetails
 
-                                                <div className='sales__group'>
-                                                    <span>Quantity:</span>
-                                                    <ListItemText primary={item.openQty} />
-                                                    <ListItemText primary={'unit'} />
-                                                    <div>
-                                                        <Quantity
-                                                            value={incrementCounters[item.ItemID] || 0}
-                                                            onChange={(e) => handleQuantityChange(e, item.ItemID, item.openQty)} />
-                                                        {qtyError[item.ItemID] && <p className='error'>Invalid Quantity. Max quantity is {item.openQty}.</p>}
+                            .map((item, index) => {
+                                return (
+
+                                    <div className='sales__item' key={item.ItemID}>
+                                        <div
+                                            key={item.ItemID}
+                                            className={`sales__item ${item.ItemID.toString() === highlightedItem ? 'highlighted' : ''}`}
+                                            ref={el => itemRefs.current[index] = el}
+                                        >
+
+
+                                            <div className='sales__container'>
+
+                                                <div className='sales__info'>
+                                                    <div className='sales__detail'>
+                                                        <div className='sales__info'>
+                                                            <ListItemText primary={item.ItemID + '-' + item.ItemName} />
+                                                        </div>
+                                                        <div className='sales__info'>
+                                                            <ListItemText secondary={item.Quantity} />
+                                                        </div>
+                                                        <div className='sales__info'>
+                                                            <ListItemText secondary={item.openQty} />
+                                                        </div>
+                                                        <div className='sales__info'>
+                                                            <ListItemText primary={'unit'} />
+                                                        </div>
                                                     </div>
 
 
+
+
+                                                    <div className='sales__group'>
+                                                        {/* <span>Quantity:</span>
+                                                    <ListItemText primary={item.Quantity} /> */}
+                                                        {/* <ListItemText primary={'unit'} /> */}
+
+
+
+                                                    </div>
+
                                                 </div>
-                                                <Autocomplete
-                                                    disablePortal
-                                                    id={`combo-box-location-${item.ItemID}`}
-                                                    options={locationsByItem[item.ItemID] || []}
-                                                    getOptionLabel={(option) => option.LocationCode || ""}
-                                                    renderInput={(params) => <TextField {...params} label="Location" />}
-                                                    value={locationSelections[item.ItemID]}
-                                                    onChange={(event, newValue) => {
-                                                        setLocationSelections(prev => ({
-                                                            ...prev,
-                                                            [item.ItemID]: newValue || null
-                                                        }));
-                                                        setLocationError(prevErrors => ({
-                                                            ...prevErrors,
-                                                            [item.ItemID]: !newValue && (formQuantities[item.ItemID] > 0)
-                                                        }));
-                                                    }}
-                                                />
-                                                {locationError[item.ItemID] && <p className='error'>Chose location for the item</p>}
 
                                             </div>
-
                                         </div>
+
+
                                     </div>
 
 
-                                </div>
 
 
+                                )
 
 
-                            )
+                            })}
+
+                        <div className='sales__footer'>
 
 
-                        })}
-
-                    <div className='sales__footer'>
-
-
-                        <TextField id="outlined-basic"
-                            label="Comments"
-                            variant="outlined"
-                            className="sales__comment"
-                            multiline
-                            maxRows={4}
-                            onChange={handleCommentChange} />
-                        <Button variant="contained"
-                            // onClick={handleSearchClick}
-                            type="submit"
-                            text="Add" />
-
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
 
-
+            </div>
         </section>
+
     )
 }
-export default OrderDetail
+export default OrderBody

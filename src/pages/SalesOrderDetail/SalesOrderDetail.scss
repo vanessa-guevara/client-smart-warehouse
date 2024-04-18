@@ -1,14 +1,14 @@
+@use './src/partials/mixin.scss' as *;
+@use './src/partials/variables.scss' as *;
 .sales {
   margin-top: 8rem;
   &__details {
-   
     border-bottom: 1.5rem;
   }
-  &__header{
+  &__header {
     padding: 1.5rem;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
-
 
   &__item {
     display: flex;
@@ -32,6 +32,16 @@
 
     width: 100%;
     justify-content: center;
+  }
+  &__container1 {
+    display: flex;
+
+    gap: 1rem;
+
+    width: 100%;
+    justify-content: center;
+    color: $blue;
+    border-bottom: 1px solid $blue
   }
   &__group {
     display: flex;
@@ -57,21 +67,28 @@
   &__title {
     margin: 2rem 2rem;
   }
-  &__comment{
+  &__comment {
     width: 100%;
+  }
+  &__container-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
     
   }
-  
+  &__titleswh {
+    color: $blue;
+    
+  }
 }
 
 .sales__item.highlighted {
-  
-    box-shadow: 0px 4px 6px rgba(0, 123, 255, 0.3); 
-    border-radius: 8px; 
-    background-color: rgba(0, 123, 255, 0.1); 
-    transition: all 0.3s ease; 
+  box-shadow: 0px 4px 6px rgba(0, 123, 255, 0.3);
+  border-radius: 8px;
+  background-color: rgba(0, 123, 255, 0.1);
+  transition: all 0.3s ease;
 }
-
 
 icon-shape {
   display: inline-flex;
@@ -84,5 +101,7 @@ icon-shape {
 .icon-sm {
   width: 2rem;
   height: 2rem;
-  
 }
+
+
+.sales1 {}
