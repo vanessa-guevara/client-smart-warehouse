@@ -41,9 +41,9 @@ function UserForm() {
             setPassword('');
             setSelectedRole(null);
 
-            setTimeout(() => {
-                navigate('/user-list');
-              }, 2000); 
+            // setTimeout(() => {
+            //     navigate('/user-list');
+            //   }, 2000); 
 
         } catch (error) {
             setMessage(error.response?.data?.message || error.message);

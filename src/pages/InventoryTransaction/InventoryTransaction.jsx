@@ -5,8 +5,8 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate, useLocation } from 'react-router-dom';
+import Alert from '@mui/material/Alert';
 import Left from '../../components/Left/Left';
 import { useParams } from 'react-router-dom';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -31,8 +31,10 @@ function InventoryTransaction({ type }) {
     const [locationSelections, setLocationSelections] = useState({});
     const [locationError, setLocationError] = useState([false])
     const [qtyError, setQtyError] = useState([])
-
-
+    const location = useLocation();
+    const [message, setMessage] = useState('Transaction processed successfully');
+    const [status, setStatus] = useState('success');
+    const [alertType, setAlertType] = useState('success');
     const [formData, setFormData] = useState();
 
     const URL = process.env.REACT_APP_API_URL;
@@ -77,8 +79,17 @@ function InventoryTransaction({ type }) {
         itemRefs.current = itemRefs.current.slice(0, order?.orderdetails.length);
     }, [order?.orderdetails]);
 
-
-
+    console.log("antes de useefect")
+    useEffect(() => {
+        const queryParams = new URLSearchParams(location.search);
+        const msg = queryParams.get('message');
+        const stat = queryParams.get('status');
+        console.log("Mensaje de URL:", msg); 
+        if (msg && stat) {
+            setMessage(msg);
+            setStatus(stat);
+        }
+    }, [location]); 
 
     const getLocationsForOrder = async (order) => {
         try {
@@ -296,10 +307,10 @@ function InventoryTransaction({ type }) {
             <div className='inventory__list1'>
                 <div className='order__header'>
                     <div className='order__titles'>
-                        <Left />
+                        {/* <Left /> */}
                         <h2 >{type === 'sales' ? "Delivery" : "Good Receipt"}</h2>
                     </div>
-
+                   
                     <div className='order__titles1'>
                         <Button variant="contained"
                             onClick={() => navigate(path)}
@@ -328,6 +339,8 @@ function InventoryTransaction({ type }) {
                 </div> */}
                 </div>
                 <div className='sales__header'>
+                {message && <Alert severity={alertType}>{message}</Alert>}
+                   
                     {/* <h3 className='sales__titleswh'>{order?.order.WarehouseName}</h3> */}
                     <div className='sales__container-header'>
 
@@ -349,10 +362,10 @@ function InventoryTransaction({ type }) {
 
 
 
-                        
+
                     </div>
                     <h3>Comments:</h3>
-                        <p>{order?.order.Comments}</p>
+                    <p>{order?.order.Comments}</p>
                 </div>
 
                 <div className='sales__container1'>

@@ -280,14 +280,18 @@ function OrderDetail({ type }) {
                 });
                 const idTr = response.data
                 console.log(idTr.id)
-                setMessage(`Transaction ${idTr.id} processed successfully.`);
-                setAlertType('success');
+                // setMessage(`Transaction ${idTr.id} processed successfully.`);
+                // setAlertType('success');
 
-                setTimeout(() => {
+              
 
                    
                     navigate(`inventory-transaction/${idTr.id}`);
-                  }, 2000); 
+                    // navigate(`inventory-transaction/${idTr.id}?success=true`);
+
+                    // navigate(`/inventory-transaction/${idTr.id}`)
+                      
+
 
                
 
@@ -373,7 +377,7 @@ function OrderDetail({ type }) {
 
                                             <div className='sales__info'>
                                                 <div className='sales__detail'>
-                                                    <ListItemText primary={item.ItemID} secondary={item.ItemName} />
+                                                    <ListItemText sx={{'text-align':"left", 'color':'#1565c0' ,'font-weight':'700'}} primary={'Code:'+item.ItemID+"-"+item.ItemName} />
 
                                                 </div>
 

@@ -59,8 +59,8 @@ function App() {
             <Route path="/sales-orders/orders-info/:id" element={<OrderBody type={"sales"} />} />
             <Route path="/purchase-orders/porders-info/:id" element={<OrderBody type={"purchase"} />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/delivery/sales-detail/:id/inventory-transaction/:id" element={<InventoryTransaction type={"sales"} />} />
-            <Route path="/good-receipt/purchase-detail/:id/inventory-transaction/:id" element={<InventoryTransaction type={"purchase"} />} />
+            <Route path="/inventory-transaction/:id" element={<InventoryTransaction type={"sales"} />} />
+            <Route path="/inventory-transaction/:id" element={<InventoryTransaction type={"purchase"} />} />
 
           </Route>
         </Routes>
