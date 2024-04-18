@@ -5,7 +5,7 @@ import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import Left from '../../components/Left/Left';
 import { useParams } from 'react-router-dom';
@@ -372,7 +372,10 @@ function InventoryTransaction({ type }) {
                     <div className='sales__info'>
                         <div className='sales__detail'>
                             <div className='sales__info'>
+                                <Link to='/item-list'>
                                 <ListItemText primary="Item" />
+                                </Link>
+
                             </div>
                             <div className='sales__info'>
                                 <ListItemText primary="Quantity" />
