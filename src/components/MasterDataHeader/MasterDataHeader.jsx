@@ -80,9 +80,9 @@ function MasterDataHeader({ type }) {
       setAlertType('success');
 
 
-      setTimeout(() => {
-        navigate('/item-list');
-      }, 2000); 
+      // setTimeout(() => {
+      //   navigate('/item-list');
+      // }, 2000); 
       
     } catch (error) {
       setMessage(error.response?.data?.message || 'Failed to update item.');
