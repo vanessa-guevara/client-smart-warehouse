@@ -127,12 +127,12 @@ function InventoryList() {
             <ul className='inventory__list' sx={style}>
             <div className='inventory__labels'>
                 <div className='inventory__info1'>
-            <ListItemText primary="Item Name/ Stock"
-                
+            <ListItemText primary="Item Name"
+                sx={{'text-align':'justify'}}
             />
             </div>
             <div className='inventory__group'>
-            <ListItemText primary="Item Group"
+            <ListItemText primary="Group"
 
             />
             </div>

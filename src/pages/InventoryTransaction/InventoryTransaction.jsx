@@ -36,7 +36,7 @@ function InventoryTransaction({ type }) {
     const [formData, setFormData] = useState();
 
     const URL = process.env.REACT_APP_API_URL;
-    const path= type === 'sales' ? "/delivery" : "/good-receipt"
+    const path = type === 'sales' ? "/delivery" : "/good-receipt"
 
 
 
@@ -334,11 +334,9 @@ function InventoryTransaction({ type }) {
 
                         <div>
                             <h3>Inventory Transaction#: {order?.order.ID}</h3>
-                            <h3>Baso on Order#: {order?.order.OrderID}</h3>
-                            <h3>Status {order?.order.Status}</h3>
-                            <p>Order Date:{new Date(order?.order.OrderDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                            <p>Baso on Order#: {order?.order.OrderID}</p>
+                            <p>Status {order?.order.Status}</p>
 
-                            <p>Delivery Date:{new Date(order?.order.LogisticDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
                         </div>
 
 
@@ -349,9 +347,12 @@ function InventoryTransaction({ type }) {
                             <p>{order?.order.City}</p>
                         </div>
 
+
+
+                        
                     </div>
-
-
+                    <h3>Comments:</h3>
+                        <p>{order?.order.Comments}</p>
                 </div>
 
                 <div className='sales__container1'>

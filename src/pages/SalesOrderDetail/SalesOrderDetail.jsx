@@ -308,7 +308,7 @@ function OrderDetail({ type }) {
     return (
 
         <section className='sales'>
-            {message && <Alert severity={alertType}>{message}</Alert>}
+           
             <div className='order__header'>
                 <div className='order__titles'>
                     <Left />
@@ -336,6 +336,7 @@ function OrderDetail({ type }) {
             </div>
             <div className='sales__header'>
                 <div>
+                {message && <Alert severity={alertType}>{message}</Alert>}
                     <h2>{order?.order.WarehouseName}</h2>
                     <br />
                     <h3>Order#: {order?.order.OrderID}</h3>

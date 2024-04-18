@@ -353,10 +353,10 @@ function OrderBody({ type }) {
                                 <ListItemText primary="Item" />
                             </div>
                             <div className='sales__info'>
-                                <ListItemText primary="Quantity" />
+                                <ListItemText primary="Qty" />
                             </div>
                             <div className='sales__info'>
-                                <ListItemText primary="Open Quantity" />
+                                <ListItemText primary="Open Qty" />
                             </div>
                             <div className='sales__info'>
                                 <ListItemText primary='unit' />
