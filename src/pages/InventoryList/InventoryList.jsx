@@ -1,5 +1,9 @@
 
-import List from '@mui/material/List';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+
 import add from '../../assets/icons/add.png'
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
@@ -27,6 +31,9 @@ const style = {
 
 
 function InventoryList() {
+    const [showAlert, setShowAlert] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
+
     const [items, setItems] = useState([]);
     const [listItems, setListItems] = useState([]);
     const token = sessionStorage.getItem("token");
@@ -34,9 +41,9 @@ function InventoryList() {
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
     const [searchError, setSearchError] = useState(false);
-    
 
-    const URL =process.env.REACT_APP_API_URL;
+
+    const URL = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         const fetchItems = async () => {
@@ -65,15 +72,33 @@ function InventoryList() {
     }, []);
 
     const handleClick = (id) => navigate(`/item-list/edit/${id}`);
-    
+
     function handleSearchChange(event) {
         setSearchTerm(event.target.value);
 
         if (event.target.value === '') {
             setItems(listItems)
             setSearchError(false);
+            console.log(listItems)
         }
     }
+
+    // function handleSearch() {
+    //     if (!searchTerm) {
+    //         setSearchError(true);
+    //         return;
+    //     }
+
+    //     const searchResults = listItems.filter((item) =>
+
+    //         item.ItemName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    //         item.ItemID.toString() === searchTerm
+
+    //     );
+
+    //     setItems(searchResults);
+    //     setSearchError(false);
+    // }
 
     function handleSearch() {
         if (!searchTerm) {
@@ -83,16 +108,37 @@ function InventoryList() {
 
         const searchResults = listItems.filter((item) =>
             item.ItemName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            item.ItemID.toString() === searchTerm
+            item.ItemID.toString() === searchTerm ||
+            item.ItemCode.toString() === searchTerm
         );
 
         setItems(searchResults);
         setSearchError(false);
-    }
 
+        // Abre el modal si no hay resultados
+        setOpenModal(searchResults.length === 0);
+    }
 
     return (
         <div className='inventory'>
+            <Dialog
+                open={openModal}
+                onClose={() => setOpenModal(false)}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">No items found</DialogTitle>
+                <DialogContent>
+                    <p id="alert-dialog-description">
+                        The item you searched for does not exist in the inventory list.
+                    </p>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={() => setOpenModal(false)} color="primary">
+                        OK
+                    </Button>
+                </DialogActions>
+            </Dialog>
 
             <div className='order__header'>
                 <div className='order__titles'>
@@ -115,6 +161,7 @@ function InventoryList() {
                             }
                         }} />
 
+
                     <Button variant="contained"
                         onClick={handleSearch}
                         type="button"
@@ -125,18 +172,18 @@ function InventoryList() {
 
 
             <ul className='inventory__list' sx={style}>
-            <div className='inventory__labels'>
-                <div className='inventory__info1'>
-            <ListItemText primary="Item Name"
-                sx={{'text-align':'justify'}}
-            />
-            </div>
-            <div className='inventory__group'>
-            <ListItemText primary="Group"
+                <div className='inventory__labels'>
+                    <div className='inventory__info1'>
+                        <ListItemText primary="Item Name"
+                            sx={{ 'text-align': 'justify' }}
+                        />
+                    </div>
+                    <div className='inventory__group'>
+                        <ListItemText primary="Group"
 
-            />
-            </div>
-            </div>
+                        />
+                    </div>
+                </div>
                 {items.map((item) => {
                     return (
 
