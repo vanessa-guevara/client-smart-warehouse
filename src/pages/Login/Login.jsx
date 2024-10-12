@@ -18,6 +18,7 @@ function Login() {
    
     const handleSubmit = async (event) => {
       event.preventDefault();
+      console.log(`${URL}/user/login`)
       try {
         const response = await axios.post(`${URL}/user/login`, {
           User: username,
